@@ -1,0 +1,90 @@
+Output : https://github.com/djayvok/Andriod-Assignment-4.4/wiki
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:orientation="vertical"
+
+    tools:context=".MainActivity" >
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:numColumns="3" >
+
+    </GridView>
+
+   <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text=" Andriod Versions" />
+
+</RelativeLayout> 
+
+
+ <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_gravity="center"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+           android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+           android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+        android:text="TextView" />
+
+</LinearLayout> 
+
+
+package com.dj;
+import java.util.ArrayList; 
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.view.Menu;
+import android.widget.AdapterView;
+import android.widget.GridView;
+public class MainActivity extends Activity {
+    GridView gv;
+     Context context;    
+        ArrayList prgmName;    
+         public static String [] prgmNameList={"GingerBread","HoneyComb","IceCream,"JellyBean","KitKat","LolliPop"};
+    public static int [] prgmImages={R.drawable.images,R.drawable.images1,R.drawable.images2,R.drawable.images3,R.drawable.images4,R.drawable.images5,R.drawable.images6};    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        gv=(GridView) findViewById(R.id.gridView1);      
+        gv.setAdapter(new CustomAdapter(this ,prgmNameList,prgmImages));
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+ 
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+} 
